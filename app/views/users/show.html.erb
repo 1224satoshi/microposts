@@ -2,3 +2,36 @@
   <%= gravatar_for @user %>
   <%= @user.name %>
 </h1>
+
+<h2>
+  
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+  <label for "@user.name">
+     Your name:
+      <%= @user.name %>
+  </div>
+  
+ <br>
+ <div class="col-md-6 col-md-offset-3">
+  <label for "@user.email">
+     email:
+      <%= @user.email %>
+  </div>
+  
+  <br>
+  <div class="col-md-6 col-md-offset-3">
+  <label for "@user.region" >
+     Region:
+      <%= @user.region %>
+  </div>
+  
+  <br>
+  <div class="col-md-6 col-md-offset-3">
+  <label for "@user.name" >
+     Your profile:
+      <%= @user.profile%>
+  </div>
+</div>
+
+</h2>
