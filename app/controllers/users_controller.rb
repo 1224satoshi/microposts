@@ -1,16 +1,14 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:edit, :update]
-  before_action :limit_user, only: [:edit, :update]
+   before_action :logged_in_user, only: [:edit, :update]
+   before_action :limit_user, only: [:edit, :update]
   
-  def show # 追加
+   def show # 追加
    @user = User.find(params[:id])
-  end
-  
-  
-  def new
+   end
+   
+   def new
     @user = User.new
-  end
-  
+   end
   
    def create
     @user = User.new(user_params)
@@ -36,26 +34,20 @@ class UsersController < ApplicationController
       end
    end
    
-   def logged_in_user
-      unless logged_in?
+    def logged_in_user
+       unless logged_in?
         flash[:danger] = "Please log in."
         redirect_to login_url
-      end
+       end
     end
-   
-   def limit_user
-     @user = User.find(params[:id])
-      unless @user == current_user
-      redirect_to root_url
+    
+    def limit_user
+       @user = User.find(params[:id])
+      redirect_to(root_url) unless @user == current_user
     end
-      
-        
-      end
-     
-  private
-
-  def user_params
-    params.require(:user).permit(:name, :email, :password,
+    private
+     def user_params
+     params.require(:user).permit(:name, :email, :password,
                                  :password_confirmation, :region, :profile)
-  end
+     end
 end
