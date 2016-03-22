@@ -1,4 +1,4 @@
-@import "bootstrap-sprockets"; /*なにしてるの？*/
+@import "bootstrap-sprockets";
 @import "bootstrap";
 
 /* universal */
@@ -67,6 +67,15 @@ p {
   color: #fff;
   text-decoration: none;
 }
+
+#error_explanation {
+  color: red;
+  ul {
+    color: red;
+    margin: 0 0 30px 0;
+  }
+}
+
 /* mixins, variables, etc. */
 
 $gray-medium-light: #eaeaea;
@@ -90,13 +99,6 @@ input {
   height: auto !important;
 }
 
-#error_explanation {
-  color: red;
-  ul {
-    color: red;
-    margin: 0 0 30px 0;
-  }
-}
 
 .field_with_errors {
   @extend .has-error;
