@@ -20,6 +20,16 @@ class UsersController < ApplicationController
       render 'new'
     end
    end
+   
+   def followings
+       @user = current_user.following_relationships.find(params[:id]).followed
+       render 'show_followings'
+   end
+   
+   def followers
+        @user = current_user.follower_relationships.find(params[:id]).following
+        render 'show_followers'
+   end
 
   private
 
