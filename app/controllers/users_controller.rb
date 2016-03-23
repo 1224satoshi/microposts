@@ -23,11 +23,13 @@ class UsersController < ApplicationController
    
    def followings
        @user = current_user.following_relationships.find(params[:id]).followed
+       @users = @user.followings.order
        render 'show_followings'
    end
    
    def followers
         @user = current_user.follower_relationships.find(params[:id]).following
+        @users = @user.followers.order
         render 'show_followers'
    end
 
