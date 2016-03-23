@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :logged_in_user, only: [:index, :edit, :update, :destroy,
+                                        :followings, :followers]
   
   def show 
    @user = User.find(params[:id])
@@ -22,13 +24,12 @@ class UsersController < ApplicationController
    end
    
    def followings
-       @user = current_user.following_relationships.find(params[:id]).followed
-       @users = @user.followings.order
+       @user = User.find(params[:id])
        render 'show_followings'
    end
    
    def followers
-        @user = current_user.follower_relationships.find(params[:id]).following
+        @user = User.find(params[:id])
         @users = @user.followers.order
         render 'show_followers'
    end
