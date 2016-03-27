@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
    before_action :logged_in_user, only: [:edit, :update]
    before_action :limit_user, only: [:edit, :update]
+  before_action :logged_in_user, only: [:index, :edit, :update, :destroy,
+                                        :followings, :followers]
   
   def show 
    @user = User.find(params[:id])
@@ -44,5 +46,22 @@ class UsersController < ApplicationController
      def limit_user
        @user = User.find(params[:id])
        redirect_to(root_url) unless @user == current_user
+     end
+     
+     def followings
+        @users = current_user.follower_users
+        render 'show_followings'
+     end
+   
+     def followers
+          @users = current_user.following_users
+          render 'show_followers'
+     end
+
+  private
+
+     def user_params
+       params.require(:user).permit(:name, :email, :password,
+                                    :password_confirmation)
      end
 end

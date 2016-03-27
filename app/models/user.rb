@@ -36,5 +36,8 @@ class User < ActiveRecord::Base
   
   def feed_items
     Micropost.where(user_id: following_user_ids + [self.id])
+  # あるユーザーがフォローしているかどうか？
+  def followed?(other_user)
+    follower_users.include?(other_user)
   end
 end
