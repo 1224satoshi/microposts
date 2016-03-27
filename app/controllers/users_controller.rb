@@ -35,11 +35,6 @@ class UsersController < ApplicationController
        end
    end
    
-   def search
-    keyword = params[:keyword]
-    @commits = Micropost.search(:microposts_cont => keyword).result
-  end
-   
     private
      def user_params
         params.require(:user).permit(:name, :email, :password,
