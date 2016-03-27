@@ -37,6 +37,17 @@ class UsersController < ApplicationController
        end
    end
    
+   def followings
+      @users = current_user.follower_users
+      render 'show_followings'
+   end
+   
+   def followers
+       @users = current_user.following_users
+       render 'show_followers'
+   end
+     
+   
     private
      def user_params
         params.require(:user).permit(:name, :email, :password,
@@ -47,21 +58,5 @@ class UsersController < ApplicationController
        @user = User.find(params[:id])
        redirect_to(root_url) unless @user == current_user
      end
-     
-     def followings
-        @users = current_user.follower_users
-        render 'show_followings'
-     end
-   
-     def followers
-          @users = current_user.following_users
-          render 'show_followers'
-     end
 
-  private
-
-     def user_params
-       params.require(:user).permit(:name, :email, :password,
-                                    :password_confirmation)
-     end
 end
