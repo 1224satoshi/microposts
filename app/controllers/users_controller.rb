@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-   before_action :logged_in_user, only: [:edit, :update]
-   before_action :limit_user, only: [:edit, :update]
+  before_action :logged_in_user, only: [:edit, :update]
+  before_action :limit_user, only: [:edit, :update]
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy,
                                         :followings, :followers]
   
@@ -15,7 +15,7 @@ class UsersController < ApplicationController
   end
   
   
-   def create
+  def create
      @user = User.new(user_params)
      if @user.save
        flash[:success] = "Welcome to the Sample App!"
@@ -23,7 +23,7 @@ class UsersController < ApplicationController
      else
        render 'new'
      end
-   end
+  end
    
    def edit
    end
@@ -45,6 +45,9 @@ class UsersController < ApplicationController
    def followers
        @users = current_user.following_users
        render 'show_followers'
+   end
+   
+   def results
    end
      
    

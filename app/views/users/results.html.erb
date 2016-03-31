@@ -1,0 +1,12 @@
+<h3>Search Results</h3>
+     <% @commits.each do |commit| %>
+       <div class="row">
+           <ul>
+            <%= gravatar_for commit.user %>
+            <h3>
+            <%= commit.user.name %>
+            </h3>
+            <%= commit.content %>
+           </ul>
+       </div>
+     <% end %>

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'sessions/new'
+  get 'users/results'
 
   root to: 'static_pages#home'
   get    'signup', to: 'users#new'
@@ -9,8 +10,10 @@ Rails.application.routes.draw do
    resources :users do
     member do
       get :followings, :followers
+    
     end
   end
+  
 
   resources :users
   resources :sessions, only: [:new, :create, :destroy]

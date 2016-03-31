@@ -1,0 +1,52 @@
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+ <h1>
+  <%= gravatar_for @user %>
+  <%= @user.name %>
+</h1>
+    </section>
+  </aside>
+  <div class="col-md-8">
+   <%= render 'follow_form' if logged_in? %>
+    <% if @user.microposts.any? %>
+      <h3>Microposts (<%= @user.microposts.count %>)</h3>
+      <ol class="microposts">
+        <%= render @microposts %>
+      </ol>
+    <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+   Your name
+  </div>
+  <div class="col-md-9">
+      <%= @user.name %>
+  </div>
+  
+  <br>
+  <div class="col-md-3">
+     email:
+  </div>
+  <div class="col-md-9">
+      <%= @user.email %>
+  </div>
+  
+  <br>
+  <div class="col-md-3">
+     Region:
+  </div>
+  <div class="col-md-9">
+      <%= @user.region %>
+  </div>
+  
+  <br>
+  <div class="col-md-3">
+     Your profile:
+  </div>
+  <div class="col-md-9">
+      <%= @user.profile%>
+  </div>
+</div>
